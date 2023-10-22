@@ -9,8 +9,9 @@ import ai_base
 # Callback function for save button
 def save_button_callback():
     input_string = thoughts_text.get("1.0", "end-1c")
-    answer = ai_base.get_ai_answer(input_string)
-    ai_string.set(answer)
+    input_mood = mood_var.get()
+    answer = ai_base.get_ai_answer(input_string, input_mood)
+    ai_string.set(answer, )
 
     save_entry()
 
