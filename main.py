@@ -3,7 +3,17 @@ from tkinter import ttk
 from datetime import datetime
 import matplotlib.pyplot as plt
 import json
- 
+
+import ai_base
+
+# Callback function for save button
+def save_button_callback():
+    input_string = thoughts_text.get("1.0", "end-1c")
+    answer = ai_base.get_ai_answer(input_string)
+    ai_string.set(answer)
+
+    save_entry()
+
 # Function to save journal entries to JSON file
 def save_entry():
     entry_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -45,8 +55,12 @@ mood_entry = ttk.Combobox(app, textvariable=mood_var, values=["Happy", "Sad", "A
  
 thoughts_label = tk.Label(app, text="Thoughts/Feelings:")
 thoughts_text = tk.Text(app, height=10, width=30)
- 
-save_button = tk.Button(app, text="Save Entry", command=save_entry)
+
+ai_string = tk.StringVar()
+ai_string.set("AI text")
+ai_label = tk.Label(app, textvariable=ai_string)
+
+save_button = tk.Button(app, text="Save Entry", command=save_button_callback)
 clear_button = tk.Button(app, text="Clear Fields", command=clear_fields)
  
 # Create a mood analytics graph (you can use libraries like Matplotlib for this)
@@ -73,6 +87,7 @@ mood_label.grid(row=0, column=0, padx=10, pady=5, sticky="e")
 mood_entry.grid(row=0, column=1, padx=10, pady=5)
 thoughts_label.grid(row=1, column=0, padx=10, pady=5, sticky="e")
 thoughts_text.grid(row=1, column=1, padx=10, pady=5, rowspan=3)
+ai_label.grid(row=1, column=2, padx=10, pady=10)
 save_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 clear_button.grid(row=4, column=1, columnspan=2, padx=10, pady=10)
 show_analytics_button.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
