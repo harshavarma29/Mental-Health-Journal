@@ -2,7 +2,7 @@ import tkinter as tk
 import json
 from tkcalendar import DateEntry
 
-def load(app): 
+def load(app):
     search_label = tk.Label(app, text="Search Entries:")
     search_field = tk.Text(app, height=1, width=30)
 

@@ -6,7 +6,7 @@ import json
 import SearchAndFilters
  
 # Function to save journal entries to JSON file
-def save_entry(): 
+def save_entry():
     entry_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     mood = mood_var.get()
     thoughts = thoughts_text.get("1.0", "end-1c")
