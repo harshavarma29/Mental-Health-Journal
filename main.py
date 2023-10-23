@@ -12,7 +12,7 @@ def save_entry():
  
     # Read existing data from JSON file
     try:
-        with open("fake_data.json", "r") as file:
+        with open("data.json", "r") as file:
             data = json.load(file)
     except FileNotFoundError:
         data = []
@@ -38,6 +38,7 @@ def clear_fields():
 # Create the main application window
 app = tk.Tk()
 app.title("Mental Health Journal")
+app.geometry("600x400")
 # Create and configure widgets
 mood_label = tk.Label(app, text="Mood:")
 mood_var = tk.StringVar()
